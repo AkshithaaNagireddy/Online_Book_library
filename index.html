@@ -10,13 +10,11 @@
 </head>
 <body>
 
-  <!-- Ambient Light Orbs -->
   <div class="glow-orb orb-purple"></div>
   <div class="glow-orb orb-cyan"></div>
   <div class="glow-orb orb-amber"></div>
 
   <div class="dashboard-wrapper">
-    <!-- Top Navigation Bar -->
     <header class="glass-surface nav-container">
       <div class="brand-group">
         <div class="brand-badge"><i class="fa-solid fa-feather-pointed"></i></div>
@@ -39,16 +37,12 @@
         </div>
       </div>
     </header>
-
-    <!-- Interactive Hero Section -->
     <section class="glass-surface showcase-banner">
       <div class="banner-content">
         <span class="status-chip"><i class="fa-solid fa-bolt"></i> Workspace Synced</span>
         <h1>Curate, Track & Master Your Reading Universe</h1>
         <p>A unified digital bookshelf built for lifelong learners and avid readers.</p>
       </div>
-
-      <!-- Quick Metrics Tracker -->
       <div class="kpi-deck">
         <div class="kpi-tile">
           <div class="kpi-header">
@@ -80,8 +74,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Filter & Query Console -->
     <section class="glass-surface console-panel">
       <div class="search-field">
         <i class="fa-solid fa-magnifying-glass"></i>
@@ -121,16 +113,11 @@
         </div>
       </div>
     </section>
-
-    <!-- Grid Container -->
     <main>
       <div class="shelf-grid" id="shelf-grid">
-        <!-- Dynamic Book Cards -->
       </div>
     </main>
   </div>
-
-  <!-- Add Book Modal -->
   <div class="modal-backdrop" id="add-modal">
     <div class="glass-surface modal-window">
       <button class="modal-exit" onclick="closeModal('add-modal')"><i class="fa-solid fa-xmark"></i></button>
@@ -186,8 +173,6 @@
       </form>
     </div>
   </div>
-
-  <!-- Sign In / Sign Up Modal -->
   <div class="modal-backdrop" id="auth-modal">
     <div class="glass-surface modal-window auth-window">
       <button class="modal-exit" onclick="closeModal('auth-modal')"><i class="fa-solid fa-xmark"></i></button>
@@ -196,8 +181,6 @@
         <button class="mode-btn active" id="auth-tab-in" onclick="switchAuthView('signin')">Sign In</button>
         <button class="mode-btn" id="auth-tab-up" onclick="switchAuthView('signup')">Sign Up</button>
       </div>
-
-      <!-- Sign In Form -->
       <form id="form-signin" class="auth-view active" onsubmit="executeSignIn(event)">
         <div class="field-item">
           <label>Email Address</label>
@@ -210,7 +193,6 @@
         <button type="submit" class="submit-action-btn">Enter Library</button>
       </form>
 
-      <!-- Sign Up Form -->
       <form id="form-signup" class="auth-view" onsubmit="executeSignUp(event)">
         <div class="field-item">
           <label>Display Name</label>
