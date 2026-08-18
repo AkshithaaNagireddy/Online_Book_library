@@ -28,7 +28,6 @@ body {
   padding-bottom: 60px;
 }
 
-/* Ambient Refraction Glows */
 .glow-orb {
   position: fixed;
   border-radius: 50%;
@@ -47,7 +46,6 @@ body {
   padding: 24px;
 }
 
-/* Glassmorphism Structural Core */
 .glass-surface {
   background: var(--panel-bg);
   backdrop-filter: blur(20px);
@@ -57,7 +55,6 @@ body {
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
 }
 
-/* Nav Bar */
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -143,7 +140,6 @@ body {
   background: rgba(255, 255, 255, 0.12);
 }
 
-/* Hero Showcase Banner */
 .showcase-banner {
   padding: 36px 40px;
   margin-bottom: 24px;
@@ -185,7 +181,6 @@ body {
   max-width: 680px;
 }
 
-/* KPI Deck */
 .kpi-deck {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -221,7 +216,6 @@ body {
 .text-rose { color: var(--accent-rose); }
 .text-cyan { color: var(--accent-cyan); }
 
-/* Filter Console */
 .console-panel {
   display: flex;
   align-items: center;
@@ -294,7 +288,6 @@ body {
   color: #fff;
 }
 
-/* Shelf Cards Grid */
 .shelf-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -427,7 +420,6 @@ body {
   color: #fbbf24;
 }
 
-/* Card Bottom Actions */
 .card-bottom-actions {
   margin-top: auto;
   display: flex;
@@ -461,7 +453,6 @@ body {
   background: rgba(244, 63, 94, 0.3);
 }
 
-/* Modals */
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -557,7 +548,6 @@ body {
   margin-top: 8px;
 }
 
-/* Auth Mode Switches */
 .auth-mode-switch {
   display: flex;
   margin-bottom: 20px;
