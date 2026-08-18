@@ -27,7 +27,6 @@ const catalogSeed = [
   { id: 25, title: "You Don't Know JS Yet", author: "Kyle Simpson", category: "Engineering", rating: 4.8, status: "Wishlist", isFav: false, cover: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=500&q=80" }
 ];
 
-// App State Management
 let shelf = JSON.parse(localStorage.getItem("auralib_books"));
 if (!shelf || shelf.length < 20) {
   shelf = catalogSeed;
@@ -162,7 +161,6 @@ function handleCreateBook(e) {
   document.getElementById("new-book-form").reset();
 }
 
-// Modal Controllers
 function openAddBookModal() {
   document.getElementById("add-modal").classList.add("open");
 }
