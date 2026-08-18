@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AuraLib | Smart Library & Reading Hub</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- Ambient Light Orbs -->
+  <div class="glow-orb orb-purple"></div>
+  <div class="glow-orb orb-cyan"></div>
+  <div class="glow-orb orb-amber"></div>
+
+  <div class="dashboard-wrapper">
+    <!-- Top Navigation Bar -->
+    <header class="glass-surface nav-container">
+      <div class="brand-group">
+        <div class="brand-badge"><i class="fa-solid fa-feather-pointed"></i></div>
+        <div>
+          <h2>Aura<strong>Lib</strong></h2>
+          <span class="sub-brand">Personal Knowledge Vault</span>
+        </div>
+      </div>
+
+      <div class="nav-control-group">
+        <button class="action-pill-btn add-btn" onclick="openAddBookModal()">
+          <i class="fa-solid fa-plus"></i>
+          <span>Add to Shelf</span>
+        </button>
+        <div id="auth-slot">
+          <button class="action-pill-btn outline-btn" onclick="openAuthModal('signin')">
+            <i class="fa-regular fa-user"></i>
+            <span>Account</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Interactive Hero Section -->
+    <section class="glass-surface showcase-banner">
+      <div class="banner-content">
+        <span class="status-chip"><i class="fa-solid fa-bolt"></i> Workspace Synced</span>
+        <h1>Curate, Track & Master Your Reading Universe</h1>
+        <p>A unified digital bookshelf built for lifelong learners and avid readers.</p>
+      </div>
+
+      <!-- Quick Metrics Tracker -->
+      <div class="kpi-deck">
+        <div class="kpi-tile">
+          <div class="kpi-header">
+            <i class="fa-solid fa-layer-group"></i>
+            <span class="kpi-label">Vault Size</span>
+          </div>
+          <h3 id="stat-total">0</h3>
+        </div>
+        <div class="kpi-tile">
+          <div class="kpi-header">
+            <i class="fa-solid fa-fire text-amber"></i>
+            <span class="kpi-label">Completed</span>
+          </div>
+          <h3 id="stat-read">0</h3>
+        </div>
+        <div class="kpi-tile">
+          <div class="kpi-header">
+            <i class="fa-solid fa-heart text-rose"></i>
+            <span class="kpi-label">Favorites</span>
+          </div>
+          <h3 id="stat-favs">0</h3>
+        </div>
+        <div class="kpi-tile">
+          <div class="kpi-header">
+            <i class="fa-solid fa-hourglass-half text-cyan"></i>
+            <span class="kpi-label">In Progress</span>
+          </div>
+          <h3 id="stat-reading">0</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter & Query Console -->
+    <section class="glass-surface console-panel">
+      <div class="search-field">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="search-input" placeholder="Search books by title, author, or keywords..." oninput="renderShelf()" />
+      </div>
+
+      <div class="filter-controls">
+        <div class="select-wrapper">
+          <i class="fa-solid fa-shapes select-icon"></i>
+          <select id="genre-select" onchange="renderShelf()">
+            <option value="All">All Categories</option>
+            <option value="Productivity">Productivity</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Finance">Finance</option>
+            <option value="Literature">Literature</option>
+            <option value="Philosophy">Philosophy</option>
+          </select>
+        </div>
+
+        <div class="select-wrapper">
+          <i class="fa-solid fa-list-check select-icon"></i>
+          <select id="status-select" onchange="renderShelf()">
+            <option value="All">All Statuses</option>
+            <option value="Completed">Completed</option>
+            <option value="Reading">Reading Now</option>
+            <option value="Wishlist">Want to Read</option>
+          </select>
+        </div>
+
+        <div class="select-wrapper">
+          <i class="fa-solid fa-arrow-down-short-wide select-icon"></i>
+          <select id="sort-select" onchange="renderShelf()">
+            <option value="default">Sort by: Default</option>
+            <option value="rating">Highest Rating</option>
+            <option value="title">Alphabetical (A-Z)</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid Container -->
+    <main>
+      <div class="shelf-grid" id="shelf-grid">
+        <!-- Dynamic Book Cards -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Book Modal -->
+  <div class="modal-backdrop" id="add-modal">
+    <div class="glass-surface modal-window">
+      <button class="modal-exit" onclick="closeModal('add-modal')"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-heading">
+        <h3>Expand Your Library</h3>
+        <p>Add a new title and start tracking your progress.</p>
+      </div>
+      <form id="new-book-form" onsubmit="handleCreateBook(event)">
+        <div class="input-row">
+          <div class="field-item">
+            <label>Title</label>
+            <input type="text" id="form-title" required placeholder="The Lean Startup" />
+          </div>
+          <div class="field-item">
+            <label>Author</label>
+            <input type="text" id="form-author" required placeholder="Eric Ries" />
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="field-item">
+            <label>Category</label>
+            <select id="form-category" required>
+              <option value="Productivity">Productivity</option>
+              <option value="Engineering">Engineering</option>
+              <option value="Finance">Finance</option>
+              <option value="Literature">Literature</option>
+              <option value="Philosophy">Philosophy</option>
+            </select>
+          </div>
+          <div class="field-item">
+            <label>Initial Status</label>
+            <select id="form-status" required>
+              <option value="Wishlist">Want to Read</option>
+              <option value="Reading">Reading Now</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="field-item">
+            <label>Rating (1-5)</label>
+            <input type="number" id="form-rating" step="0.1" min="1" max="5" value="4.8" required />
+          </div>
+          <div class="field-item">
+            <label>Cover Image Link</label>
+            <input type="url" id="form-cover" placeholder="https://..." required />
+          </div>
+        </div>
+
+        <button type="submit" class="submit-action-btn">Save to Shelf</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sign In / Sign Up Modal -->
+  <div class="modal-backdrop" id="auth-modal">
+    <div class="glass-surface modal-window auth-window">
+      <button class="modal-exit" onclick="closeModal('auth-modal')"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="auth-mode-switch">
+        <button class="mode-btn active" id="auth-tab-in" onclick="switchAuthView('signin')">Sign In</button>
+        <button class="mode-btn" id="auth-tab-up" onclick="switchAuthView('signup')">Sign Up</button>
+      </div>
+
+      <!-- Sign In Form -->
+      <form id="form-signin" class="auth-view active" onsubmit="executeSignIn(event)">
+        <div class="field-item">
+          <label>Email Address</label>
+          <input type="email" id="in-email" required placeholder="alex@domain.com" />
+        </div>
+        <div class="field-item">
+          <label>Password</label>
+          <input type="password" id="in-pwd" required placeholder="••••••••" />
+        </div>
+        <button type="submit" class="submit-action-btn">Enter Library</button>
+      </form>
+
+      <!-- Sign Up Form -->
+      <form id="form-signup" class="auth-view" onsubmit="executeSignUp(event)">
+        <div class="field-item">
+          <label>Display Name</label>
+          <input type="text" id="up-name" required placeholder="Alex Mercer" />
+        </div>
+        <div class="field-item">
+          <label>Email Address</label>
+          <input type="email" id="up-email" required placeholder="alex@domain.com" />
+        </div>
+        <div class="field-item">
+          <label>Password</label>
+          <input type="password" id="up-pwd" required placeholder="••••••••" />
+        </div>
+        <button type="submit" class="submit-action-btn">Create Profile</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
